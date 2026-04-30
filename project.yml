@@ -1,0 +1,45 @@
+name: Rossi
+options:
+  bundleIdPrefix: ru.rossihelp
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+  defaultConfig: Debug
+  developmentLanguage: ru
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    PRODUCT_BUNDLE_IDENTIFIER: ru.rossihelp.app
+    PRODUCT_NAME: Rossi
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "2"
+    # Используем явный Info.plist вместо auto-generated — там правильный UILaunchScreen
+    GENERATE_INFOPLIST_FILE: NO
+    INFOPLIST_FILE: Rossi/Resources/Info.plist
+    # Code signing — для unsigned debug-сборок в симуляторе
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGNING_ALLOWED: NO
+    CODE_SIGNING_REQUIRED: NO
+    CODE_SIGN_IDENTITY: ""
+    DEVELOPMENT_TEAM: ""
+
+packages:
+  SocketIO:
+    url: https://github.com/socketio/socket.io-client-swift
+    from: 16.1.0
+
+targets:
+  Rossi:
+    type: application
+    platform: iOS
+    sources:
+      - path: Rossi
+    dependencies:
+      - package: SocketIO
+        product: SocketIO
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
